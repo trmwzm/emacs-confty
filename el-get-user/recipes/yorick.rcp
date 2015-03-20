@@ -1,0 +1,4 @@
+(:name yorick
+       :type github
+       :pkgname "trmwzm/yorick-mode"
+       :depends cl-lib)

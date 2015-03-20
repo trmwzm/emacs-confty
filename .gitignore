@@ -5,4 +5,6 @@ backups/
 eshell/
 projectile-bookmarks.eld
 ac-comphist.dat
-projectile.cache
+projectile.cacheido.last
+smex-items
+ido.last

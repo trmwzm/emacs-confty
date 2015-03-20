@@ -55,39 +55,63 @@
         (smartparens-global-mode t)
         (require 'smartparens-config))
 
-(bundle evil
-        :type github
-        :pkgname "emacsmirror/evil"
-        (evil-mode t))
+;; (bundle evil
+;;         :type github
+;;         :pkgname "emacsmirror/evil"
+;;         (evil-mode t))
 
-(bundle evil-matchit
-        (global-evil-matchit-mode t))
+;; (bundle evil-matchit
+;;         (global-evil-matchit-mode t))
 
-(bundle evil-nerd-commenter
-        (evilnc-default-hotkeys))
+;; (bundle evil-nerd-commenter
+;;         (evilnc-default-hotkeys))
 
-(bundle evil-numbers
-        (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-        (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+;; (bundle evil-numbers
+;;         (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+;;         (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
 
-(bundle evil-surround
-        (global-evil-surround-mode t))
+;; (bundle evil-surround
+;;         (global-evil-surround-mode t))
 
-(bundle evil-visualstar
-        (global-evil-visualstar-mode))
+;; (bundle evil-visualstar
+;;         (global-evil-visualstar-mode))
 
-(bundle evil-jumper
-        (global-evil-jumper-mode))
+;; (bundle evil-jumper
+;;         (global-evil-jumper-mode))
 
-(bundle evil-escape
-        (setq-default evil-escape-key-sequence "jk")
-        (evil-escape-mode))
+;; (bundle evil-escape
+;;         (setq-default evil-escape-key-sequence "jk")
+;;         (evil-escape-mode))
 
-(bundle evil-easymotion
-        (evilem-default-keybindings "SPC"))
+;; (bundle evil-easymotion
+;;         (evilem-default-keybindings "SPC"))
 
 (bundle company-mode
         (add-hook 'after-init-hook 'global-company-mode))
+
+(bundle smex)
+
+(bundle lua-mode)
+
+(bundle yorick)
+
+(bundle ido-ubiquitous)
+
+(bundle flx)
+
+(bundle ido-vertical-mode)
+
+(bundle auto-complete)
+
+(bundle ac-math)
+
+(bundle smart-mode-line)
+
+(bundle '(jazz-theme
+          solarized-emacs
+          sublime-themes
+          color-theme-zenburn
+          color-theme-darkmine))
 
 ;; (bundle company-tern)
 
