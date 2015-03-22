@@ -53,6 +53,32 @@
 (define-key 'help-command (kbd "C-v") 'find-variable)
 (define-key 'help-command (kbd "C-l") 'find-library)
 
+;; hilight symbol
+(global-set-key [(control f3)] 'highlight-symbol-at-point)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-prev)
+(global-set-key [(control meta f3)] 'highlight-symbol-query-replace)
+(global-set-key [(meta f5)] 'insert-quotes)
+
+;; double-quote symbol
+(global-set-key [(meta f5)] 'insert-quotes)
+(defun insert-quotes ()
+  "Inserts quotes (\") around the current region or work."
+  (interactive)
+  (let (start end bounds)
+    (if (and transient-mark-mode mark-active)
+        (setq start (region-beginning)
+              end (region-end))
+      (progn
+        (setq bounds (bounds-of-thing-at-point 'symbol))
+        (setq start (car bounds)
+              end (cdr bounds))))
+    (goto-char start)
+    (insert "\"")
+    (goto-char (+ end 1))
+    (insert "\"")))
+
 ;; a complement to the zap-to-char command, that doesn't eat up the target character
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)

@@ -42,6 +42,8 @@
 
 (bundle move-text)
 
+(bundle highlight-symbol)
+
 ;;;(bundle js2-mode
 ;; ;       (add-hook 'js-mode-hook 'js2-mode))
 
