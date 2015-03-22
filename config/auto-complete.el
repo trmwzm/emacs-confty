@@ -96,3 +96,4 @@
 (define-key emacs-lisp-mode-map (kbd "C-S-SPC") 'my-popup-describe-symbol)
 
 ;;; init-auto-complete.el ends here
+(provide 'auto-complete)

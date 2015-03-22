@@ -1,29 +1,40 @@
-(defun load-config (file)
-  "Prefixes the file name with the config file directory path and loads the
-  file."
-  (load-file (expand-file-name file "~/.emacs.d/config")))
+;;; Code lifted from bbatsov's prelude
+(defvar current-user (getenv "USER"))
+;; -- info
+(message "whoami: %s!" current-user)
 
-(load-config "ui.el")
-(load-config "editing.el")
-(load-config "packages.el")
-(load-config "fortran.el")
-(load-config "general.el")
-(load-config "custom-key-set.el")
-(load-config "ido.el")
-(load-config "yorick.el")
-(load-config "hippie-expand.el")
-(load-config "auto-complete.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("46fd293ff6e2f6b74a5edf1063c32f2a758ec24a5f63d13b07a20255c074d399" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; -- all subdirs
+(defun recursive-add-subfolders-to-load-path (parent-dir)
+ "Add all level PARENT-DIR subdirs to the `load-path'."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+                (not (equal f ".."))
+                (not (equal f ".")))
+       (add-to-list 'load-path name)
+       (recursive-add-subfolders-to-load-path name)))))
+
+;; -- where to root
+(defvar emacsd-dir (file-name-directory load-file-name)
+  "The root dir of the Emacs config.")
+
+;; -- config in root
+(defvar config-dir (expand-file-name  "config" emacsd-dir)
+  "This directory houses all configuration  modules.")
+
+;; -- add config directory and all its subdirs to Emacs's `load-path'
+(add-to-list 'load-path config-dir)
+(recursive-add-subfolders-to-load-path config-dir)
+(message "load-path: %s!" load-path)
+
+;; -- configurations
+(require 'ui)
+(require 'editing)
+(require 'packages)
+(require 'fortran)
+(require 'general)
+(require 'custom-key-set)
+(require 'ido)
+(require 'yorick)
+(require 'hippie-expand)
+(require 'auto-complete)

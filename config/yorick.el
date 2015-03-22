@@ -12,3 +12,4 @@
     ;; -- possibly this is antisocial, but an expert can easily put it back
     (setcdr (assoc "\\.i\\'" auto-mode-alist) 'yorick-mode)
   (setq auto-mode-alist (append '(("\\.i\\'" . yorick-mode)) auto-mode-alist)))
+(provide 'yorick)

@@ -1,21 +1,31 @@
-;; Hide all the default GUI crap.
+;; disable startup screen and GUI tools.
 (setq inhibit-startup-message t)
+(setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
+;; nice scrolling
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+;; make the fringe (gutter) smaller
+;; the argument is a width in pixels (the default is 8)
+(if (fboundp 'fringe-mode)
+    (fringe-mode 4))
 
 ;; Maximise by default.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; minor modes
-(tool-bar-mode -1)
 (column-number-mode t)
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 (electric-pair-mode 1)
 
-;; Don't use the awful OSX full screen.
-(setq ns-use-native-fullscreen nil)
-
-;; Remove tooltips. Again, OSX fails with them.
-;; Ugh, Apple.
+;; x-gtk-use-system-tooltips
 ;; (setq tooltip-use-echo-area t)
+
+(provide 'ui)

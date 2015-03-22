@@ -53,3 +53,4 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;;; ido.el ends here
+(provide 'ido)

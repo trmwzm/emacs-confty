@@ -38,6 +38,10 @@
 
 (bundle helm-ag)
 
+(bundle ace-window)
+
+(bundle move-text)
+
 ;;;(bundle js2-mode
 ;; ;       (add-hook 'js-mode-hook 'js2-mode))
 
@@ -117,3 +121,4 @@
 
 ;; (bundle tern
 ;;        (add-hook 'js2-mode-hook 'tern-mode))
+(provide 'packages)

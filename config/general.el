@@ -11,6 +11,9 @@
 (setenv "TERM" "xterm")
 (setenv "TMPDIR" "/tmp")
 
+;; config changes made through the customize UI will be store here
+(setq custom-file (expand-file-name "custom.el" "~/.emacs.d"))
+
 ;; I dont what this means. but looks imp
 (setq buffer-file-coding-system 'utf-8-unix)
 (setq default-file-name-coding-system 'utf-8-unix)
@@ -90,6 +93,9 @@
                            lisp-mode
                            lisp-interaction-mode
                            c-mode
+                           fortran-mode
+                           f90-mode
+                           yorick-mode
                            c++-mode
                            objc-mode
                            latex-mode
@@ -130,3 +136,4 @@
   (add-hook 'before-save-hook 'copyright-update))
 
 ;;; init-general.el ends here
+(provide 'general)

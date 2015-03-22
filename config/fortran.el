@@ -15,3 +15,4 @@
                 (f90-change-keywords f90-auto-keyword-case))))
 
 ;;; fortran.el ends here
+(provide 'fortran)
