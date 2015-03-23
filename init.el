@@ -34,7 +34,7 @@
 (require 'fortran)
 (require 'general)
 (require 'custom-key-set)
-(require 'ido)
+(require 'ido-init)
 (require 'yorick)
 (require 'hippie-expand)
 (require 'auto-complete)
