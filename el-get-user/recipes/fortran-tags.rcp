@@ -1,0 +1,4 @@
+(:name fortran-tags
+       :description "source code indexing of modern Fortran."
+       :type svn
+       :url "https://svn.code.sf.net/p/fortrantags/code/trunk" )
