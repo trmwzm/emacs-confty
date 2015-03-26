@@ -14,5 +14,21 @@
             (if f90-auto-keyword-case   ; change case of all keywords on startup
                 (f90-change-keywords f90-auto-keyword-case))))
 
+;; load module python/anaconda3
+;; fix fortran-tags.py shebang
+;; fortran-find-tag issuance generate
+;; find -name '*.f90' | xargs fortran-tags.py -g
+;; (setq fortran-tags-path "~/my-project/FORTAGS")
+
+(add-hook 'f90-mode-hook
+          (lambda ()
+  	         (local-set-key (kbd "M-.") 'fortran-find-tag)
+	         (local-set-key (kbd "M-*") 'fortran-pop-tag-mark)
+	         (local-set-key (kbd "M-n") 'fortran-goto-next)
+             (local-set-key (kbd "M-s g") 'fortran-find-proc-calls)
+	    	 (local-set-key (kbd "M-s s") 'fortran-find-proc-calls-sub)
+	    	 (local-set-key (kbd "M-s f") 'fortran-find-proc-calls-func)
+	    	 (local-set-key (kbd "M-s t") 'fortran-find-proc-calls-type)))
+
 ;;; fortran.el ends here
 (provide 'fortran)

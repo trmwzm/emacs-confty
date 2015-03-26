@@ -67,11 +67,108 @@
 ;;; damn IMPORTANT.
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;;; using vcs
+(setq make-backup-files nil)
+
 ;;; Dont ask me when a process is alive while I kill a buffer
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
+;;; tag
+(add-hook 'c-mode-common-hook
+  (function (lambda ()
+              (require 'gtags)
+              (gtags-mode t))))
+
+(add-hook 'gtags-mode-hook
+          (function (lambda()
+                      (local-set-key (kbd "M-.") 'gtags-find-tag)   ; find a tag, also M-.
+                      (local-set-key (kbd "M-,") 'gtags-find-rtag)  ; reverse tag
+                      (local-set-key (kbd "C-M-,") 'gtags-find-pattern)  ; reverse tag
+                      (local-set-key (kbd "C-M-;") 'tm-gtags-next-gtag)   ;; M-; cycles to next result, after doing M-. C-M-. or C-M-,
+                      ;;(local-set-key "\M-." 'gtags-find-tag) ;; M-. finds tag
+                      )))
+(defun tm-gtags-update ()
+  "create the gnu global tag file"
+  (interactive)
+  (if (= 0 (call-process "global" nil nil nil " -p")) ; tagfile doesn't exist?
+  	  ;;(start-process "gtags" "*Messages*" "gtags" "--single-update" (buffer-name))
+  	  (start-process "gtags" "*Messages*" "global" "--update") ))
+
+(defun gtags-root-dir ()
+  "Returns GTAGS root directory or nil if doesn't exist."
+  (with-temp-buffer
+    (if (zerop (call-process "global" nil t nil "-pr"))
+        (buffer-substring (point-min) (1- (point-max)))
+      nil)))
+
+(defun gtags-update-single(filename)
+  "Update Gtags database for changes in a single file"
+  (interactive)
+  (if (eq system-type 'windows-nt)
+      (start-process "update-gtags" "update-gtags" "cmd" "/c" (concat "cd " (gtags-root-dir) " && gtags --single-update " filename ))
+    (start-process "update-gtags" "update-gtags" "bash" "-c" (concat "cd " (gtags-root-dir) " ; gtags --single-update " filename ))))
+
+(defun gtags-update-current-file()
+  (interactive)
+  (let ((gtagsfilename (replace-regexp-in-string (gtags-root-dir) "." (buffer-file-name (current-buffer)))))
+    (gtags-update-single gtagsfilename)
+    (message "Gtags updated for %s" gtagsfilename)))
+
+(defun gtags-update-hook()
+  "Update GTAGS file incrementally upon saving a file"
+  (when gtags-mode
+    (when (gtags-root-dir)
+      (gtags-update-current-file))))
+
+
+;; (defun tm-gtags-global-update ()
+;;   "If current directory is part of a GLOBAL database update it."
+;;   (interactive)
+;;   (when (tm-gtags-global-dir)
+;;     (if (equal (call-process "global" nil nil nil "-vu") 0)
+;;         (setq gtags-global-complete-list-obsolete-flag t)
+;;       (error "global database update failed"))))
+
+;; (defun tm-gtags-global-dir-p (dir)
+;;   "Return non-nil if directory DIR contains a GLOBAL database."
+;;   (and (file-exists-p (expand-file-name "GPATH" dir))
+;;        (file-exists-p (expand-file-name "GRTAGS" dir))
+;;        (file-exists-p (expand-file-name "GSYMS" dir))
+;;        (file-exists-p (expand-file-name "GTAGS" dir))))
+
+;; (defun tm-gtags-global-dir (&optional dir)
+;;   "Return the nearest super directory that contains a GLOBAL database."
+;;   (interactive)
+;;   (when (null dir)
+;;     (setq dir default-directory))
+;;   (cond ((tm-gtags-global-dir-p dir) dir)
+;;         ((equal (file-truename dir)
+;;                 (file-truename "/")) nil)
+;;         (t (tm-gtags-global-dir
+;;             (file-name-as-directory
+;;              (expand-file-name ".."  dir))))))
+
+(defun tm-gtags-next-gtag ()
+  "Find next matching tag, for GTAGS."
+  (interactive)
+  (let ((latest-gtags-buffer
+         (car (delq nil  (mapcar (lambda (x) (and (string-match "GTAGS SELECT" (buffer-name x)) (buffer-name x)) )
+                                 (buffer-list)) ))))
+    (cond (latest-gtags-buffer
+           (switch-to-buffer latest-gtags-buffer)
+           (next-line)
+           (gtags-select-it nil))
+          ) ))
+
+ (add-hook 'gtags-mode-hook
+           (lambda ()
+             ; (add-hook 'after-save-hook 'tm-gtags-update nil t)
+  	    (add-hook 'after-save-hook 'gtags-update-hook nil t)
+  	    ))
+
+;;;---------------------------------------------------------------------
 ;;; make executable if shebang is present
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)

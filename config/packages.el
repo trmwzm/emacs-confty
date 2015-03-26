@@ -44,6 +44,7 @@
 
 (bundle highlight-symbol)
 
+(bundle fortran-tags)
 ;;;(bundle js2-mode
 ;; ;       (add-hook 'js-mode-hook 'js2-mode))
 
@@ -60,6 +61,8 @@
 (bundle smartparens
         (smartparens-global-mode t)
         (require 'smartparens-config))
+
+(bundle ggtags)
 
 ;; (bundle evil
 ;;         :type github
