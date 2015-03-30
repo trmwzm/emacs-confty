@@ -1,0 +1,194 @@
+#
+# Magit quick reference sheet
+#
+# Copyright (C) 2009 Shakthi Kannan <shakthimaan@gmail.com>
+#
+# License: GNU Free Documentation License
+#
+# Version 1.1
+
+Introduction
+------------
+
+Key binding for "M-x magic-status"
+
+;; magit
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp" t)
+(global-set-key "\C-xg" 'magit-status)
+(require 'magit)
+
+$		Switch to *magit-process* buffer containing transcript
+		       of the most recent command.
+
+Sections
+--------
+
+TAB		Toggles between hidden and visible sections.
+
+1		Show sections.
+2		Show files.
+3		Show diff.
+4		Show hunks.
+
+M-1,M-2,M-3,M-4	Files on the respective levels are affected.
+
+Files are on level 2, and diff hunks are on level 4.
+
+M-h   	     	Hide (2).
+M-H		Hide all (M-2).
+
+M-s		Show (4).
+M-S		Show all (M-4).
+
+Status
+------
+
+g		Refresh status buffer.
+
+Untracked files
+---------------
+
+s		Untracked file to staging area.
+S		Move all hunks of all diffs to staging area.
+
+i		Ignore file, put it in .gitignore file.
+C-u i		Will ask for name of file to be ignored. Useful for directores.
+I   		Will put it in .git/info/exclude.
+
+k		Delete untracked file. On section title, all untracked files
+		       are deleted.
+
+Staging and committing
+----------------------
+
+u		Unstage a hunk.
+
+c		Bring buffer to write change description before committing.
+C-c C-c		In the buffer containing change description to commit.
+
+History
+-------
+
+l   		Show history.
+
+C-u L
+L		Show log in more verbose.
+RET		Will show more information about current commit.
+SPC,
+  DEL		Scroll history information in new buffer.
+
+a 		Apply current commit to current branch. (Need to commit changes
+		      explicitly)
+A		Cherry-pick current commit and commit all changes.
+
+v		Revert the current commmit.
+
+C-w		Copy sha1 of current commit to kill ring.
+
+=		Differences between current commit, and marked commmit.
+
+.		Mark/unmark the current commit.
+C-u ..		From wherever the point is, the marked commit will be unmarked.
+
+Reflog
+------
+
+h   		Show reflog of HEAD.
+
+H		Ask for HEAD.
+
+Diffing
+-------
+
+d		Changes of working tree to another version.
+
+D		Show changes between two arbitrary versions.
+
+a		On diff output, will apply the change to working tree.
+
+Tagging
+-------
+
+t		Light-weight tag.
+
+T		Annotated tag.
+
+Resetting
+---------
+
+x		Ask for revision and reset HEAD.
+
+X		Reset working tree and staging area to most recently committed
+		      state. Will discard local modifications.
+
+Stashing
+--------
+
+z		Create new stash.
+a		Apply changes.
+A		To pop them.
+k		To drop a stash.
+
+Z		Create a stash, and will leave the changes in your working tree
+		       and index.
+
+Branching
+---------
+
+b		Switch to a different branch, and checkout. Will not keep local
+		       modifications.
+B		Create new branch and switch to it.
+
+Wazzup
+------
+
+w		Summary of branches in relation to current branch.
+
+Merge
+-----
+
+m		Manual merge. No committing.
+
+M		Automatic merge.
+
+e		Use it to edit and resolve conflicts when automatic merge fails.
+		    Will need to stage before committing.
+
+Rebasing
+--------
+
+R		Rebase.
+
+Rewriting
+---------
+
+r s		Start a re-write.
+
+a, A		Cherry-pick commits.
+
+r t		To move book keeping information from the status buffer.
+
+r a		Wish to start over.
+
+r f		Finish the rewrite.
+
+Pushing and pulling
+-------------------
+
+P		git push.
+
+f		git remote update.
+F		git pull.
+		From "unpulled changes" section, it will merge with 
+		     current branch.
+
+Interfacing with subversion
+---------------------------
+
+N r		git svn rebase.
+
+N c		git svn dcommit.
+
+Reference:
+
+* http://zagadka.vm.bytemark.co.uk/magit/magit.html

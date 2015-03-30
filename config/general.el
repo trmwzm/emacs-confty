@@ -74,6 +74,13 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; revert buffers automatically when underlying files are changed externally
+(global-auto-revert-mode t)
+
+;; sensible undo
+(global-undo-tree-mode)
+(diminish 'undo-tree-mode)
+
 ;;; Dont ask me when a process is alive while I kill a buffer
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function

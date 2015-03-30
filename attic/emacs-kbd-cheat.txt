@@ -1,0 +1,497 @@
+#
+# Emacs a day keeps the vi-zing away
+#
+# Copyright (C) 2008-2010 Shakthi Kannan <shakthimaan [AT] gmail dot com>
+#
+# License: GNU Free Documentation License
+#
+# Version 1.4
+#
+
+File-handling
+-------------
+
+C-x C-f		Find file.
+C-x C-v		Find alternate file.
+
+C-x i		Insert file
+
+C-x C-s		Save file.
+C-x C-w		Save as file.
+
+C-x C-c		Exit.
+
+Control commands
+----------------
+
+C-g		Abort current command.
+
+C-x u		Undo last command.
+C-_		Undo previous edit.
+
+M-x 		
+  revert-buffer Undo all changes since you last saved the file.
+
+Help
+----
+
+C-h		Help command.
+
+C-h t		Start Emacs tutorial.
+
+C-h i		Start info documentation reader.
+
+M-x man	
+  <enter> 
+  <command> 
+  <enter>	Read man pages.
+
+Navigation
+----------
+
+C-f		Move forward one character.
+C-b		Move backward one character.
+
+M-f		Move forward one word.
+M-b		Move back one word.
+
+C-p		Move to previous line.
+C-n		Move to next line.
+
+C-a		Move to beginning of line.
+C-e		Move to end of line.
+
+M-a		Move one sentence backward.
+M-e		Move one sentence forward.
+
+M-}		Move forward one paragraph.
+M-{		Move backward one paragraph.
+
+C-v		Scroll up.
+M-v		Scroll down.
+
+C-x ]		Move forward one page.
+C-x [		Move backward one page.
+
+M-<		Move to beginning of file.
+M->		Move to end of file.
+
+C-l		Recenter.
+
+M-n		Repeat next command n times.
+C-u n		Repeat next command n times; four times, if 
+    		       n not specified.
+
+Clipboard commands
+------------------
+
+C-d		Delete character under cursor.
+Del
+
+M-d		Kill word.
+M-Del		
+
+C-y		Paste what you cut.
+
+C-Space		Mark the beginning or end of file.
+M-h		Mark paragraph.
+
+M-w		Copy the marked region.
+C-w		Delete a marked region.
+
+C-x h		Mark whole buffer.
+C-x C-p		Mark page.
+
+C-x C-x		Exchange location of cursor and mark.
+
+M-y		After C-y, paste earlier deletion.
+
+Formatting text
+---------------
+
+M-q		Reformat paragraph.
+
+C-M-\	      	Indent each line between cursor and mark.
+
+M-m	      	Move to first nonblank character on the line.
+
+M-^	      	Join this line to previous one.
+
+C-t	      	Transpose characters.
+M-t	      	Transpose two words.
+C-x C-t	      	Transpose lines.
+
+M-c	      	Capitalize following word.
+M-u	      	Uppercase following word.
+M-l	      	Lowercase following word.
+
+M-/		Word completion. Useful when coding.
+
+Search
+------
+
+C-s		Search forward.
+C-r		Search backward.
+
+C-s C-w		Incremental search on the word the cursor is on.
+C-s C-y		Incremental search on word on cursor till end of line.
+C-s M-y		Incremental search with text from kill ring as 
+    		       search string.
+
+C-s C-s		Repeat previous search.
+C-r C-r		Repeat previous search backward.
+
+C-M-s Enter	Search regex forward.
+C-M-r Enter	Search regex backward.
+
+C-M-s		Search regex incrementally forward.
+C-M-r		Search regex incrementally backward.
+
+C-M-%		Query-replace regex.
+
+M-x 
+  query-replace 
+    <enter> 
+  Query replace:
+    ...
+
+---- Responses during query-replace
+
+Space or y      Replace and go to next instance.
+Del or n        Don't replace; move to next instance.
+
+.	        Replace the current instance and quit.
+,	        Replace and let me see the result before moving on.
+!	        Replace all.
+
+^	        Back up to the previous instance.
+
+Enter or q      Exit query-replace.
+
+E	        Modify the replacement string.
+
+C-r	        Enter a recursive edit.
+C-w	        Delete this instance and enter a recursive edit.
+C-M-c	        Edit recursive edit and resume query-replace.
+C-]	        Exit recursive edit and exit query-replace.
+
+Buffer commands
+---------------
+
+C-x b		Switch to buffer.
+C-x C-b		Display the buffer list.
+C-x k		Kill buffer.
+
+C-x ->		Move to next buffer.
+C-x <-		Move to previous buffer.
+
+---- Buffer list commands
+
+C-n,
+  Space,
+  n,or
+  (down arrow)  Move to next buffer, downwards.
+C-p,
+  p,
+  or(up arrow)	Move to previous buffer, upwards.
+
+m		Mark buffers to be displayed in windows.
+d,or x		Mark buffer for deletion.
+u		Unmark buffer.
+Del		Unmark the previous buffer in the list.
+
+s		Save buffer.
+
+~		Mark buffer as unmodified.
+%		Toggle read-only status on buffer.
+
+1		Display buffer in full screen.
+2		Display this buffer and next in horizontal window.
+
+f		Replace buffer list with this buffer.
+o		Replace other window with this buffer.
+
+v		Display buffers marked with m.
+
+q		Quit buffer list.
+
+Windows
+-------
+
+C-x 2		Split window vertically.
+C-x 3		Split window horizontally.
+
+C-x o		Move to other window.
+C-x 0		Delete current window (C-x zero).
+C-x 1		Delete other windows.
+
+C-x 4 f		Find file in the other window.
+C-x 4 b		Select buffer in the other window.
+
+C-x >		Scroll right.
+C-x <		Scroll left.
+
+C-x ^		Enlarge window.
+C-x }		Enlarge window horizontally.
+C-x {		Shring window horizontally.
+
+C-x +		Balance windows.
+C-M-v		Scroll other window.
+C-x -		Make window smaller if buffer is smaller than window.		
+
+Frames
+------
+
+C-x 5 2		Create new frame on current buffer.
+C-x 5 o		Move to other frame.
+C-x 5 0		Delete current frame.
+
+C-x 5 f		Find file in new frame.
+C-x 5 r		Find file in new frame, read-only mode.
+
+C-x 5 b		Switch to buffer in new frame.
+
+Shell mode commands
+-------------------
+
+M-!		Run a command.
+C-u M-!		Run command and output in current buffer.
+M-h M-!		Mark region and execute command on region.
+
+M-x shell	Enter shell mode.
+M-x eshell	Enter eshell mode.
+
+C-d		Send EOF character to buffer; delete character elsewhere.
+C-c C-c		Interrupt current job. Same as C-c.
+C-c C-d		Send EOF character.
+C-c C-z		Suspend or stop job.
+
+C-c C-u		Erase current line.
+
+M-p		Retrieve previous commands.
+M-n		Retrieve subsequent commands.
+
+C-c C-o		Delete output from last command.
+C-c C-r		Move first line of output to top of window.
+C-c C-e		Move last line of output to bottom of window.
+C-c C-p		Move to previous command.
+C-c C-n		Move to next command.
+
+M-x ansi-term	Enter ANSI terminal.
+
+Dired commands
+--------------
+
+C-x d		Start Dired.
+
+h		Display descriptive help text for Dired.
+
+n		Move to next line.
+p		Move up a line.
+
++		Create a directory.
+C		Copy file.
+R		Rename file.
+
+g		Re-read the directory from disk.
+
+M		Use chmod command on this file.
+O		Change ownership of file.
+G		Change group permissions.
+
+A		Do regex search on marked files.
+B		Byte-compile file.
+
+d		Flag for deletion.
+D		Query for immediate deletion.
+
+e		Edit this file.
+f		Find file to edit.
+v		View file.
+w		Copy filename to kill ring.
+
+H		Create a hard link to this file.
+S		Create symbolic link file.
+
+i		Add list of this subdirectory to current dired buffer;
+		If already there, just move to it.
+
+k		Remove line from display, don't delete file.
+
+L		Load file.
+
+m		Mark with *.
+u		Remove mark.
+x		Delete files flagged with D.
+
+s		Sort by date or file (toggles between the two).
+t		Toggle marks on files and directories.
+
+o		Find file in another window; move there.
+C-o		Find file in another window; don't move there.
+
+P		Print file.
+q		Quit.
+
+Q		Query-replace string in marked files.
+
+y		Display information on type of file from file command.
+Z		Compress or uncompress file.
+
+~		Flag backup files for deletion.
+#		Flag auto-save files for deletion.
+&		Flag garbage files for deletion.
+.		Flag numbered backups for deletion.
+
+=		Compare this file to another file (the one at the mark).
+M-=		Compare this file with its backup file.
+
+!,or X		Ask for shell command to execute on the current file or 
+     		marked files.
+
+>		Move to next directory.
+<		Move to previous directory.
+
+^		Find the parent directory in a Dired buffer.
+
+$		Hide or show the current directory.
+M-$		Hide all subdirectories, leaving only their names; 
+		repeat to toggle.
+
+C-M-n		Move to next subdirectory.
+C-M-p		Move to previous subdirectory.
+
+C-M-u		If you have inserted subdirectories using i, move to 
+		the parent directory in this buffer.
+C-M-d		If you have inserted subdirectories using i, move the 
+		first subdirectory for this directory in this buffer.
+
+*c		Change marks on specified files.
+*!,or M-Del	Remove all marks from all files.
+
+**		Mark executables.
+*/		Mark directories.
+*@		Mark symlinks.
+
+M-}		Move to the next file marked with * or D.
+M-{		Move to the previous file marked with * or D.
+
+%d		Flag for deletion files that match regex.
+%g		Mark files whose contents match regex.
+%l		Lowercase marked files.
+%R		Rename files with filenames that match regex.
+%u		Uppercae marked files.
+
+Calendar
+--------
+
+M-x calendar	Displays calendar.
+
+.		Move to today's date.
+
+C-f		Move forward a day.
+C-b		Move backward a day.
+
+C-n		Move forward a week.
+C-p		Move backward a week.
+
+M-}		Move forward one month.
+M-{		Move backward a month.
+
+C-x ]		Move forward a year.
+C-x [		Move backward a year.
+
+C-a		Move to the beginning of the week.
+C-e		Move to the end of the week.
+
+M-a		Move to the beginning of the month.
+M-e		Move to the end of the month.
+
+M-<		Move to the beginning of the year.
+M->		Move to the end of the year.
+
+g d		Go to specified date.
+
+o		Put the specified month in the middle of the display.
+
+C-x <		Scroll forward one month.
+C-x >		Scroll backward one month.
+
+C-v		Scroll forward three months.
+M-v		Scroll backward three months.
+
+Space		Scroll another window.
+
+C motion commands
+-----------------
+
+M-a		Move to beginning of current statement.
+M-e		Move to end of current statement.
+
+M-q		If in comment, fill paragraph, preserving indentation.
+
+C-M-a		Move to beginning of function body.
+C-M-e		Move to end of function.
+C-M-h		Put cursor at beginning of function, the mark at the end.
+
+C-c C-q		Indent the entire function.
+
+C-c C-u		Move to beginning of current preprocessor conditional.
+C-c C-p		Move to previous preprocessor conditional.
+C-c C-n		Move to next preprocessor conditional.
+
+Cscope
+------
+
+C-c s, is common prefix for the following commands:
+
+s      	  	Find symbol
+
+d 		Find global definition
+g		Find global definition (alternate binding)
+G		Find global definition without prompting.
+
+c		Find functions calling this function.
+C		Find functions called from this function.
+
+t		Find text string.
+e		Find egrep pattern.
+
+f		Find file.
+i		Find files including this file.
+
+---- In search results:
+
+b		Display cscope buffer.
+B		Auto display *cscope* buffer toggle
+
+n		Next symbol.
+p		Previous symbol.
+
+N		Next file.
+P		Previous file.
+
+u		Pop mark (go to previous search entry mark).
+
+a		Set initial directory.
+A		Unset initial directory.
+
+L		Create list of files toindex.
+I		Create list and index.
+
+Org-mode
+--------
+
+<TAB>           Subtree cycling
+S-<TAB>  	Global cycling
+
+C-c C-t		Rotate the TODO state
+    		       .->  unmarked -> TODO -> DONE -.
+		       '------------------------------'    		  
+
+C-c C-x C-a	Archive
+C-C C-x C-s,or  Move subtree to separate archive file
+C-c $
+
+C-c C-c		Toggle checkbox status
+C-c #		Update statistics

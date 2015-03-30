@@ -64,6 +64,10 @@
 
 (bundle ggtags)
 
+(bundle diminish)
+
+(bundle undo-tree)
+
 ;; (bundle evil
 ;;         :type github
 ;;         :pkgname "emacsmirror/evil"
