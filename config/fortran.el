@@ -9,11 +9,12 @@
 (add-hook 'f90-mode-hook
           (lambda ()
             ;; These are not default.
-            (abbrev-mode 1)             ; turn on abbreviation mode
-            (f90-add-imenu-menu)        ; extra menu with functions etc.
-            (if f90-auto-keyword-case   ; change case of all keywords on startup
-                (f90-change-keywords f90-auto-keyword-case))))
+            (abbrev-mode 1)               ; turn on abbreviation mode
+            (f90-add-imenu-menu)))        ; extra menu with functions etc.
+;;            (if f90-auto-keyword-case   ; change case of all keywords on startup
+;;                (f90-change-keywords f90-auto-keyword-case))))
 
+(load "fortran-tags.el")
 ;; load module python/anaconda3
 ;; fix fortran-tags.py shebang
 ;; fortran-find-tag issuance generate

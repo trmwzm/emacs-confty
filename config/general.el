@@ -70,6 +70,9 @@
 ;;; using vcs
 (setq make-backup-files nil)
 
+;;; don't create "lock" links
+(setq create-lockfiles nil)
+
 ;; split vertical in single frame
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
