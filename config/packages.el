@@ -38,8 +38,6 @@
 
 (bundle helm-ag)
 
-(bundle ace-window)
-
 (bundle move-text)
 
 (bundle highlight-symbol)
@@ -124,7 +122,11 @@
           solarized-emacs
           sublime-themes
           color-theme-zenburn
-          color-theme-darkmine))
+          color-theme-darkmine
+          color-theme-sanityinc-tomorrow
+          color-theme-twilight
+          moe-theme
+          naquadah-theme))
 
 ;; (bundle company-tern)
 
