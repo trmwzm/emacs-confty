@@ -20,6 +20,10 @@
 (global-set-key (kbd "<f9> v") 'visible-mode)
 
 ;; Window switching. (C-x o goes to the next window)
+(global-set-key (kbd "C-x o") (lambda ()
+                                (interactive)
+                                (other-window 1))) ;; back one
+;; Window switching. (C-x o goes to the next window)
 (global-set-key (kbd "C-x O") (lambda ()
                                 (interactive)
                                 (other-window -1))) ;; back one
