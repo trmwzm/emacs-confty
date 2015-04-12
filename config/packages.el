@@ -38,6 +38,8 @@
 
 (bundle helm-ag)
 
+(bundle ace-window)
+
 (bundle move-text)
 
 (bundle highlight-symbol)
